@@ -1,0 +1,11 @@
+
+@layer base {
+   html {
+    font-family: "adani", system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    height: 100%;
+   
+    
+  }
+}
