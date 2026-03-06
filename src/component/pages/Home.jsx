@@ -1,61 +1,87 @@
-import React, { useEffect, useState } from "react";
-import { getBanner,getGallry } from "../utils/getAbout";
+import React, { useRef } from "react";
+import Slider from "react-slick";
+import { useSlider } from "../hooks/useSlider";
+import { ChevronRight, ChevronLeft } from "lucide-react";
+import { useBanner } from "../hooks/useBanner";
 
-import { useQuery } from "@tanstack/react-query";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+// Custom Arrow Components
+const NextArrow = ({ onClick }) => (
+  <div
+    className="absolute right-2 top-1/2 -translate-y-1/2 z-10 cursor-pointer text-white text-3xl select-none"
+    onClick={onClick}
+  >
+    <ChevronRight className="w-10 h-10" />
+  </div>
+);
+
+const PrevArrow = ({ onClick }) => (
+  <div
+    className="absolute left-2 top-1/2 -translate-y-1/2 z-10 cursor-pointer text-white text-3xl select-none"
+    onClick={onClick}
+  >
+    <ChevronLeft className="w-10 h-10" />
+  </div>
+);
 
 const Home = () => {
-  const [index, setIndex] = useState(0);
+  const { data: banner, isFetching: bannerFetching } = useBanner();
 
-  const { data = [], isFetching } = useQuery({
-    queryKey: ["slider"],
-    queryFn: getGallry,
-  });
+  const { data = [] } = useSlider();
+  const sliderRef = useRef(null);
 
-  const { data:banner = [], isFetching:bannerFetching } = useQuery({
-    queryKey: ["banner"],
-    queryFn: getBanner,
-  });
-
- console.log(banner)
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % data?.length);
-    }, 3000);
-
-    return () => clearInterval(timer);
-  }, [data.length]);
-
-  const next = () => {
-    setIndex((prev) => (prev + 1) % data?.length);
-  };
-
-  const prev = () => {
-    setIndex((prev) => (prev - 1 + data?.length) % +data?.length);
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows: true,
+    pauseOnHover: true,
+    adaptiveHeight: true,
+    lazyLoad: "ondemand",
+    fade: true, // ✅ fade effect
+    cssEase: "linear", // smooth fade transition
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
 
   return (
     <>
-      <div className="relative py-10">
-        <div onClick={prev} className="">
-          <ChevronLeft className="absolute left-0 top-1/2  -translate-y-1/2 h-10 w-10  text-white flex justify-center items-center" />
+      <div className="">
+        <div className="w-full overflow-hidden">
+          {data.length > 0 ? (
+            <Slider ref={sliderRef} {...settings}>
+              {data.map((item, i) => (
+                <div key={i} className="rounded-lg overflow-hidden mt-[2%]">
+                  <img
+                    src={item.image}
+                    alt={`slide-${i}`}
+                    className="w-full h-100 object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </Slider>
+          ) : (
+            <p className="text-center text-gray-500">Loading slides...</p>
+          )}
         </div>
-        <div>
-          <img
-            src={data[index]?.image}
-            alt=""
-            className="transition-opacity duration-500"
-          />
+
+        <div className="flex w-full gap-10 py-10"> 
+          {banner?.map((el, index) => {
+            return (
+              <div key={index} className="w-1/3 h-full rounded-lg overflow-hidden" >
+                <img className="w-full h-full object-cover " src={el.banner_image}></img>
+              </div>
+            );
+          })}
         </div>
-        <div onClick={next}>
-          <ChevronRight className="absolute right-0 top-1/2  -translate-y-1/2  w-10 h-10 text-white  flex justify-center items-center" />
-        </div>
-      </div>
-      <div>
-        {banner.map((el)=>{
-          return <div></div>
-        })}
       </div>
     </>
   );

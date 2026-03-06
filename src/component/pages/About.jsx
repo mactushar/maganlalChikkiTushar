@@ -1,43 +1,94 @@
 import React from "react";
-import { getAbout } from "../utils/getAbout";
-
-import { useQuery } from "@tanstack/react-query";
+import { useGetAbout } from "../hooks/useGetAbout";
 
 const About = () => {
-  const { isFetching, isLoading, data } = useQuery({
-    queryKey: ["about"],
-    queryFn: getAbout,
-  });
+  const { data, isFetching } = useGetAbout();
 
-  if (data) {
-    console.log(data[0]);
-  }
   if (isFetching) {
-    return <h1>loading ...</h1>;
+    return (
+      <div className="flex justify-center items-center h-screen bg-gray-50 dark:bg-gray-900">
+        <span className="text-gray-700 dark:text-gray-200 text-2xl animate-pulse">
+          Loading...
+        </span>
+      </div>
+    );
   }
-  return (
-    <>
-    <div className="p-8">
-      <div className="flex p-4 w-full justify-center items-center">
-        <div className="flex-1">
-          <img src={data[0]?.image} className="w-200" alt="" />
-        </div>
-        <div className="flex-1">
-          <p className="p-4 px-8 text-xl font-semibold">{data[0].title}</p>
-          <p className="px-8 leading-7.5"> {data[0]?.description}</p>
-        </div>
-      </div>
-      <div className="py-4">
-        <p className="font-semibold">CLIENT SATISFACTION</p>
-        <p>{data[0].client_satisfaction}</p>
-      </div>
 
-      <div className="pb-4 ">
-        <p className="font-semibold">OUR TEAM</p>
-        <p>{data[0].our_team}</p>
+  const about = data?.[0];
+
+  return (
+    <div className="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+      <div className="max-w-7xl mx-auto px-6 py-20">
+
+        {/* ABOUT CARD */}
+        <div className="flex flex-col lg:flex-row items-center gap-10 
+        bg-white dark:bg-gray-800 
+        rounded-2xl shadow-lg p-10 
+        border border-gray-100 dark:border-gray-700">
+
+          {/* IMAGE */}
+          <div className="flex-1 w-full max-w-md lg:max-w-full">
+            <img
+              src={about?.image}
+              alt={about?.title}
+              className="w-full h-auto object-cover rounded-xl shadow-md hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+
+          {/* TEXT */}
+          <div className="flex-1 w-full text-center lg:text-left space-y-4">
+            <h2 className="text-3xl md:text-4xl font-semibold">
+              {about?.title}
+            </h2>
+
+            <p className="text-gray-600 dark:text-gray-300 leading-relaxed md:text-lg">
+              {about?.description}
+            </p>
+          </div>
+        </div>
+
+
+        {/* STATS */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10">
+
+          <div className="bg-white dark:bg-gray-800 
+          p-6 rounded-xl text-center shadow-md 
+          border border-gray-100 dark:border-gray-700">
+
+            <p className="text-gray-500 dark:text-gray-400 uppercase font-semibold mb-2 text-sm tracking-widest">
+              Client Satisfaction
+            </p>
+
+            <p className="text-2xl font-bold">
+              {about?.client_satisfaction}
+            </p>
+          </div>
+
+
+          <div className="bg-white dark:bg-gray-800 
+          p-6 rounded-xl text-center shadow-md 
+          border border-gray-100 dark:border-gray-700">
+
+            <p className="text-gray-500 dark:text-gray-400 uppercase font-semibold mb-2 text-sm tracking-widest">
+              Our Team
+            </p>
+
+            <p className="text-2xl font-bold">
+              {about?.our_team}
+            </p>
+          </div>
+
+        </div>
+
+
+        {/* FOOTER */}
+        <p className="text-gray-500 dark:text-gray-400 text-center text-sm mt-12 tracking-wide">
+          Tradition Meets Innovation • Maganlal Chikki
+        </p>
+
       </div>
-      </div>
-    </>
+    </div>
   );
 };
 

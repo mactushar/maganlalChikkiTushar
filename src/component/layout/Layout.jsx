@@ -6,7 +6,7 @@ const Layout = ()=>{
     return(
         <>
         <Header/>
-        <main>
+        <main className="mx-12">
             <Outlet/>
         </main>
         <Footer/>
