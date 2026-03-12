@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
 import Slider from "react-slick";
 import { useSlider } from "../hooks/useSlider";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import { useBanner } from "../hooks/useBanner";
 
-
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import Products from "../Products";
 
 // Custom Arrow Components
 const NextArrow = ({ onClick }) => (
@@ -73,14 +73,21 @@ const Home = () => {
           )}
         </div>
 
-        <div className="flex w-full gap-10 py-10"> 
-          {banner?.map((el, index) => {
-            return (
-              <div key={index} className="w-1/3 h-full rounded-lg overflow-hidden" >
-                <img className="w-full h-full object-cover " src={el.banner_image}></img>
-              </div>
-            );
-          })}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 py-10">
+          {banner?.map((el, index) => (
+            <div key={index} className="h-64 rounded-lg overflow-hidden">
+              <img
+                className="w-full h-full object-cover"
+                src={el.banner_image}
+                alt="banner"
+              />
+            </div>
+          ))}
+        </div>
+        <div>
+          <Products/>
+         
+          
         </div>
       </div>
     </>

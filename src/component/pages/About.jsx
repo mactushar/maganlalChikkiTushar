@@ -6,7 +6,7 @@ const About = () => {
 
   if (isFetching) {
     return (
-      <div className="flex justify-center items-center h-screen bg-gray-50 dark:bg-gray-900">
+      <div className="flex justify-center items-center h-screen dark:bg-[#0f172a]">
         <span className="text-gray-700 dark:text-gray-200 text-2xl animate-pulse">
           Loading...
         </span>
@@ -17,16 +17,18 @@ const About = () => {
   const about = data?.[0];
 
   return (
-    <div className="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
-
+    <div className="text-gray-800 dark:bg-[#0f172a] dark:text-gray-100 transition-colors duration-300">
+      
       <div className="max-w-7xl mx-auto px-6 py-20">
 
         {/* ABOUT CARD */}
-        <div className="flex flex-col lg:flex-row items-center gap-10 
-        bg-white dark:bg-gray-800 
-        rounded-2xl shadow-lg p-10 
-        border border-gray-100 dark:border-gray-700">
-
+        <div
+          className="flex flex-col lg:flex-row items-center gap-10
+          bg-white dark:bg-[#1e293b]
+          rounded-2xl shadow-lg p-10
+          border border-gray-100 dark:border-gray-700"
+        >
+          
           {/* IMAGE */}
           <div className="flex-1 w-full max-w-md lg:max-w-full">
             <img
@@ -48,14 +50,14 @@ const About = () => {
           </div>
         </div>
 
-
         {/* STATS */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10">
 
-          <div className="bg-white dark:bg-gray-800 
-          p-6 rounded-xl text-center shadow-md 
-          border border-gray-100 dark:border-gray-700">
-
+          <div
+            className="bg-white dark:bg-[#1e293b]
+            p-6 rounded-xl text-center shadow-md
+            border border-gray-100 dark:border-gray-700"
+          >
             <p className="text-gray-500 dark:text-gray-400 uppercase font-semibold mb-2 text-sm tracking-widest">
               Client Satisfaction
             </p>
@@ -65,11 +67,11 @@ const About = () => {
             </p>
           </div>
 
-
-          <div className="bg-white dark:bg-gray-800 
-          p-6 rounded-xl text-center shadow-md 
-          border border-gray-100 dark:border-gray-700">
-
+          <div
+            className="bg-white dark:bg-[#1e293b]
+            p-6 rounded-xl text-center shadow-md
+            border border-gray-100 dark:border-gray-700"
+          >
             <p className="text-gray-500 dark:text-gray-400 uppercase font-semibold mb-2 text-sm tracking-widest">
               Our Team
             </p>
@@ -80,7 +82,6 @@ const About = () => {
           </div>
 
         </div>
-
 
         {/* FOOTER */}
         <p className="text-gray-500 dark:text-gray-400 text-center text-sm mt-12 tracking-wide">

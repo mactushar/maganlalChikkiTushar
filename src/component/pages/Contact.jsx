@@ -1,135 +1,111 @@
 import React from "react";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
 const Contact = () => {
   return (
-    <div className="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <div className="dark:bg-[#0f172a] text-gray-800 dark:text-gray-100 transition-colors duration-300">
 
-      {/* TOP SECTION */}
-      <div className="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-10">
+      <div className="max-w-7xl mx-auto px-6 py-20">
 
-        {/* CONTACT FORM */}
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-10 border border-gray-100 dark:border-gray-700">
-
-          <h2 className="text-3xl font-semibold mb-8">
-            Send us a message
-          </h2>
-
-          <form className="space-y-6">
-
-            <input
-              type="text"
-              placeholder="Your Name"
-              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 
-              bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-100
-              focus:outline-none focus:ring-2 focus:ring-red-500"
-            />
-
-            <input
-              type="email"
-              placeholder="Your Email"
-              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 
-              bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-100
-              focus:outline-none focus:ring-2 focus:ring-red-500"
-            />
-
-            <textarea
-              rows="4"
-              placeholder="Your Message"
-              className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 
-              bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-100
-              focus:outline-none focus:ring-2 focus:ring-red-500"
-            />
-
-            <button
-              type="submit"
-              className="w-full bg-red-500 text-white py-3 rounded-lg font-medium hover:bg-red-600 transition"
-            >
-              Send Message
-            </button>
-
-          </form>
+        {/* TITLE */}
+        <div className="text-center mb-14">
+          <h2 className="text-4xl font-semibold mb-4">Contact Us</h2>
+          <p className="text-gray-500 dark:text-gray-400">
+            We'd love to hear from you. Send us a message.
+          </p>
         </div>
 
+        <div className="grid lg:grid-cols-2 gap-10">
 
-        {/* CONTACT DETAILS */}
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-10 border border-gray-100 dark:border-gray-700">
+          {/* CONTACT FORM */}
+          <div className="bg-white dark:bg-[#1e293b] p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
 
-          <h2 className="text-3xl font-semibold mb-8">
-            Contact Details
-          </h2>
+            <form className="space-y-6">
 
+              <div>
+                <label className="block mb-2 text-sm font-medium">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  placeholder="Enter your name"
+                  className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+
+              <div>
+                <label className="block mb-2 text-sm font-medium">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+
+              <div>
+                <label className="block mb-2 text-sm font-medium">
+                  Message
+                </label>
+                <textarea
+                  rows="4"
+                  placeholder="Write your message..."
+                  className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+
+              <button
+                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-lg transition"
+              >
+                Send Message
+              </button>
+
+            </form>
+          </div>
+
+          {/* MAP + CONTACT INFO */}
           <div className="space-y-6">
 
-            {/* Address */}
-            <div className="flex items-start gap-4">
-              <MapPin className="text-red-500 mt-1" size={22} />
+            {/* MAP */}
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700">
+              <iframe
+                className="w-full h-[300px] dark:invert dark:hue-rotate-180"
+                src="https://www.google.com/maps?q=Pune&output=embed"
+                loading="lazy"
+              />
+            </div>
+
+            {/* CONTACT INFO */}
+            <div className="bg-white dark:bg-[#1e293b] p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 space-y-4">
+
               <div>
-                <p className="font-semibold">
-                  Maganlal Chikki Products Pvt Ltd
-                </p>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  Shed No. 49A & B, Opp. Monsento LICEL, Nangargaon,
-                  Lonavala 410401 Dist. Pune
+                <h4 className="font-semibold">Address</h4>
+                <p className="text-gray-500 dark:text-gray-400">
+                  Pune, Maharashtra, India
                 </p>
               </div>
-            </div>
 
-            {/* Phone */}
-            <div className="flex items-center gap-4">
-              <Phone className="text-red-500" size={22} />
-              <p className="text-gray-600 dark:text-gray-300">
-                +91 2114 274060 | +91 7666530969
-              </p>
-            </div>
+              <div>
+                <h4 className="font-semibold">Email</h4>
+                <p className="text-gray-500 dark:text-gray-400">
+                  support@example.com
+                </p>
+              </div>
 
-            {/* Email */}
-            <div className="flex items-center gap-4">
-              <Mail className="text-red-500" size={22} />
-              <p className="text-gray-600 dark:text-gray-300">
-                sales@maganlalchikki.in
-              </p>
-            </div>
+              <div>
+                <h4 className="font-semibold">Phone</h4>
+                <p className="text-gray-500 dark:text-gray-400">
+                  +91 98765 43210
+                </p>
+              </div>
 
-            {/* Time */}
-            <div className="flex items-center gap-4">
-              <Clock className="text-red-500" size={22} />
-              <p className="text-gray-600 dark:text-gray-300">
-                9 AM To 6 PM (Closed Thursday)
-              </p>
-            </div>
-
-            {/* Website */}
-            <div className="pt-4 border-t border-gray-200 dark:border-gray-700 text-sm text-gray-600 dark:text-gray-300">
-              Online Store:
-              <span className="font-medium text-gray-900 dark:text-white ml-2">
-                www.maganlalchikki.in
-              </span>
             </div>
 
           </div>
-        </div>
-
-      </div>
-
-
-      {/* MAP SECTION */}
-      <div className="max-w-7xl mx-auto px-6 pb-20">
-
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
-
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.402639949902!2d73.412399!3d18.744236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be801d47b0b8a8f%3A0x125b90dcecb8f1b1!2sMaganlal%20Chikki!5e0!3m2!1sen!2sin!4v1710000000000"
-            className="w-full h-105 lg:h-150"
-            loading="lazy"
-            allowFullScreen
-            title="Google Map Location"
-          ></iframe>
 
         </div>
 
       </div>
-
     </div>
   );
 };
