@@ -14,7 +14,7 @@ const AllProducts = ({ data }) => {
   
   return (
     <>
-    <SingleProduct name ={data?.cat_name} data={products}/>
+    <SingleProduct name ={data?.cat_name} categoryId ={data?.id} data={products}/>
 
     </>
   )

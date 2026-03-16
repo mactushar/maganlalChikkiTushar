@@ -12,7 +12,7 @@ const Products = () => {
   return (
     <>
       {data?.map((product) => {
-        return <AllProducts key={data.id} data={product} />;
+        return <AllProducts key={product.id} data={product} />;
       })}
     </>
   );
