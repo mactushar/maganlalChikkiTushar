@@ -53,8 +53,11 @@ const Home = () => {
         {data.length > 0 ? (
           <Slider ref={sliderRef} {...settings}>
             {data.map((item, i) => (
-              <div key={i} className="rounded-lg overflow-hidden mt-[2%]">
-
+              <div
+                key={i}
+                className="relative rounded-lg overflow-hidden mt-[2%]"
+              >
+                {/* Image */}
                 <motion.img
                   src={item.image}
                   alt={`slide-${i}`}
@@ -77,6 +80,8 @@ const Home = () => {
                   }}
                 />
 
+                {/* 🔥 Overlay (just added this) */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
               </div>
             ))}
           </Slider>

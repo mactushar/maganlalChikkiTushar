@@ -2,9 +2,16 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import { X } from "lucide-react";
+import { removeFav } from "./rtk/slice/addFavourite";
 
 const Fav = () => {
+  const dispatch = useDispatch()
   const data = useSelector((store) => store.fav.list);
+
+  const rmfav=(id)=>{
+    dispatch(removeFav(id))
+
+  }
 
 
 
@@ -40,6 +47,7 @@ const Fav = () => {
 
           
             <button
+            onClick={()=>rmfav(item.id)}
               className="ml-4 text-gray-500 hover:text-red-500 transition-colors z-10 flex items-center justify-center"
             >
               <X size={24} />
