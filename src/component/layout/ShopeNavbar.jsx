@@ -33,8 +33,7 @@ const ShopeNavbar = ({ data = [] }) => {
   const favList = useSelector((store) => store.fav.list);
   const fiterallData = useSelector((store) => store.filter.filter);
   const cbx = useSelector((store) => store.filter.checkbox);
-const priceRange = useSelector((store) => store.filter.priceRange);
-
+  const priceRange = useSelector((store) => store.filter.priceRange);
 
   const result = useQueries({
     queries: data.map((p) => ({
@@ -43,6 +42,8 @@ const priceRange = useSelector((store) => store.filter.priceRange);
         const res = await getProducts(p.id);
         return res.map((r) => ({
           ...r,
+          id: Number(r.id), // 🔥 normalize id
+          price: Number(r.price), // 🔥 FIX (VERY IMPORTANT)
           category_id: Number(p.id),
         }));
       },
@@ -81,7 +82,7 @@ const priceRange = useSelector((store) => store.filter.priceRange);
 
   const checkBoxHandler = (id) => {
     dispatch(setCheckBox(Number(id)));
-    dispatch(applyFilters()); 
+    dispatch(applyFilters());
   };
 
   return (
