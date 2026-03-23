@@ -8,7 +8,7 @@ import {
   setData,
   applyFilters,
   setPriceRange,
-  setRating,
+  
 } from "../rtk/slice/ProductFilterSlice";
 import { addFav } from "../rtk/slice/addFavourite";
 import { Link } from "react-router-dom";
@@ -42,9 +42,8 @@ const ShopeNavbar = ({ data = [] }) => {
         const res = await getProducts(p.id);
         return res.map((r) => ({
           ...r,
-          id: Number(r.id), // 🔥 normalize id
-          price: Number(r.price), // 🔥 FIX (VERY IMPORTANT)
-          category_id: Number(p.id),
+          
+          category_id: p.id,
         }));
       },
       enabled: !!p.id,
@@ -108,7 +107,7 @@ const ShopeNavbar = ({ data = [] }) => {
                 <input
                   type="checkbox"
                   className="accent-red-500"
-                  checked={cbx.includes(Number(cat.id))}
+                  checked={cbx.includes(cat.id)}
                   onChange={() => checkBoxHandler(cat.id)}
                 />
                 {cat.cat_name}
@@ -129,7 +128,7 @@ const ShopeNavbar = ({ data = [] }) => {
             type="range"
             min="1"
             max="1000"
-            defaultValue="300"
+            
             className="w-full accent-red-500"
             onChange={(e) => {
               dispatch(setPriceRange([1, Number(e.target.value)]));
@@ -145,7 +144,7 @@ const ShopeNavbar = ({ data = [] }) => {
 
         <div className="border-t border-gray-200 dark:border-gray-700 mb-6"></div>
 
-        {/* Rating */}
+      
         <div>
           <h3 className="text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">
             Rating
@@ -172,7 +171,7 @@ const ShopeNavbar = ({ data = [] }) => {
                 className="accent-red-500"
                 onChange={() => {
                   dispatch(setRating(3));
-                  dispatch(applyFilters());
+                  
                 }}
               />
               ⭐⭐⭐ & above
@@ -182,7 +181,7 @@ const ShopeNavbar = ({ data = [] }) => {
               className="text-xs text-red-500 mt-2"
               onClick={() => {
                 dispatch(setRating(null));
-                dispatch(applyFilters());
+                
               }}
             >
               Clear
