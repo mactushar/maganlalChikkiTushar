@@ -34,6 +34,7 @@ const ShopeNavbar = ({ data = [] }) => {
   const fiterallData = useSelector((store) => store.filter.filter);
   const cbx = useSelector((store) => store.filter.checkbox);
   const priceRange = useSelector((store) => store.filter.priceRange);
+  console.log(cbx)
 
   const result = useQueries({
     queries: data.map((p) => ({
@@ -41,6 +42,7 @@ const ShopeNavbar = ({ data = [] }) => {
       queryFn: async () => {
         const res = await getProducts(p.id);
         return res.map((r) => ({
+         
           ...r,
           
           category_id: p.id,
@@ -80,7 +82,7 @@ const ShopeNavbar = ({ data = [] }) => {
   };
 
   const checkBoxHandler = (id) => {
-    dispatch(setCheckBox(Number(id)));
+    dispatch(setCheckBox(id));
     dispatch(applyFilters());
   };
 
@@ -156,10 +158,7 @@ const ShopeNavbar = ({ data = [] }) => {
                 type="radio"
                 name="rating"
                 className="accent-red-500"
-                onChange={() => {
-                  dispatch(setRating(4));
-                  dispatch(applyFilters());
-                }}
+                
               />
               ⭐⭐⭐⭐ & above
             </label>
@@ -169,20 +168,14 @@ const ShopeNavbar = ({ data = [] }) => {
                 type="radio"
                 name="rating"
                 className="accent-red-500"
-                onChange={() => {
-                  dispatch(setRating(3));
-                  
-                }}
+                
               />
               ⭐⭐⭐ & above
             </label>
 
             <button
               className="text-xs text-red-500 mt-2"
-              onClick={() => {
-                dispatch(setRating(null));
-                
-              }}
+              
             >
               Clear
             </button>
