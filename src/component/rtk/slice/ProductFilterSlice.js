@@ -8,7 +8,7 @@ const filterSLice = createSlice({
     checkbox: [],
     search: "",
     priceRange: [1, 1000],
-    rating: null,
+   
   },
   reducers: {
     setData: (state, action) => {
