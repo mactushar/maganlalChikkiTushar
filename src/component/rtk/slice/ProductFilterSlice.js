@@ -16,13 +16,13 @@ const filterSLice = createSlice({
     },
 
     setCheckBox: (state, action) => {
-      const id = action.payload;
+      const id = String(action.payload);
 
       const exist = state.checkbox.includes(id);
       if (!exist) {
         state.checkbox.push(id);
       } else {
-        state.checkbox = state.checkbox.filter((d) => d !== id);
+        state.checkbox = state.checkbox.filter((d) => String(d) !== id);
       }
     },
 
