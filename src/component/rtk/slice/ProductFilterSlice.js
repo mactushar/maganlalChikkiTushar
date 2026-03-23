@@ -20,7 +20,7 @@ const filterSLice = createSlice({
 
       const exist = state.checkbox.includes(id);
       if (!exist) {
-        state.checkbox.push(id);
+        state.checkbox.push(Number(id));
       } else {
         state.checkbox = state.checkbox.filter((d) => d !== id);
       }

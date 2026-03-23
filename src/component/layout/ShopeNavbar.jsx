@@ -43,7 +43,7 @@ const priceRange = useSelector((store) => store.filter.priceRange);
         const res = await getProducts(p.id);
         return res.map((r) => ({
           ...r,
-          category_id: p.id,
+          category_id: Number(p.id),
         }));
       },
       enabled: !!p.id,
@@ -80,7 +80,7 @@ const priceRange = useSelector((store) => store.filter.priceRange);
   };
 
   const checkBoxHandler = (id) => {
-    dispatch(setCheckBox(id));
+    dispatch(setCheckBox(Number(id)));
     dispatch(applyFilters()); 
   };
 
@@ -107,7 +107,7 @@ const priceRange = useSelector((store) => store.filter.priceRange);
                 <input
                   type="checkbox"
                   className="accent-red-500"
-                  checked={cbx.includes(cat.id)}
+                  checked={cbx.includes(Number(cat.id))}
                   onChange={() => checkBoxHandler(cat.id)}
                 />
                 {cat.cat_name}
