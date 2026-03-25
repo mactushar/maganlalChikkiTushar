@@ -25,6 +25,7 @@ const AllProducts = ({ data }) => {
       <SingleProduct
         name={data?.cat_name}
         categoryId={data?.id}
+        catImage = {data?.cat_image}
         data={products}
       />
     </>

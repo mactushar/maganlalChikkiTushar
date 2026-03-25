@@ -42,7 +42,7 @@ const ShopeNavbar = ({ data = [] }) => {
       queryFn: async () => {
         const res = await getProducts(p.id);
         return res.map((r) => ({
-         
+          
           ...r,
           
           category_id: p.id,
@@ -82,9 +82,9 @@ const ShopeNavbar = ({ data = [] }) => {
   };
 
   const checkBoxHandler = (id) => {
-    dispatch(setCheckBox(id));
-    dispatch(applyFilters());
-  };
+  dispatch(setCheckBox(String(id)));
+  dispatch(applyFilters());
+};
 
   return (
     <div className="flex min-h-screen">
@@ -109,7 +109,7 @@ const ShopeNavbar = ({ data = [] }) => {
                 <input
                   type="checkbox"
                   className="accent-red-500"
-                  checked={cbx.includes(cat.id)}
+                 checked={cbx.includes(String(cat.id))}
                   onChange={() => checkBoxHandler(cat.id)}
                 />
                 {cat.cat_name}
